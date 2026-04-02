@@ -1,6 +1,6 @@
-import { expandVariantGroup, isStaticShortcut, isString } from '@unocss/core'
 import type { ShortcutValue, SourceCodeTransformer, UnoGenerator } from '@unocss/core'
 import type MagicString from 'magic-string'
+import { expandVariantGroup, isStaticShortcut, isString } from '@unocss/core'
 
 export interface KeepOption {
   /**

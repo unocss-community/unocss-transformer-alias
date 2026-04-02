@@ -2,39 +2,35 @@
   "name": "unocss-transformer-alias",
   "type": "module",
   "version": "0.0.8",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@10.33.0",
   "description": "Transform alias for UnoCSS shortcuts",
   "author": "Chris <https://github.com/zyyv>",
   "license": "MIT",
-  "homepage": "https://github.com/zyyv/unocss-transformer-alias#readme",
+  "homepage": "https://github.com/unocss-community/unocss-transformer-alias#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zyyv/unocss-transformer-alias.git"
+    "url": "git+https://github.com/unocss-community/unocss-transformer-alias.git"
   },
   "bugs": {
-    "url": "https://github.com/zyyv/unocss-transformer-alias/issues"
+    "url": "https://github.com/unocss-community/unocss-transformer-alias/issues"
   },
   "keywords": [
     "unpreset",
     "unocss",
+    "unocss community",
     "unocss transformer"
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
+        "./dist/*.d.mts",
+        "./*"
       ]
     }
   },
@@ -42,10 +38,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
-    "prepublishOnly": "pnpm run build",
-    "release": "bumpp --commit --push --tag && pnpm publish",
+    "build": "tsdown",
+    "dev": "tsdown -w",
+    "release": "bumpp -r",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
@@ -54,19 +49,21 @@
     "play": "npm -C playground run dev"
   },
   "dependencies": {
-    "@unocss/core": "^0.61.0"
+    "@unocss/core": "^66.6.7"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.21.2",
-    "@babel/types": "^7.24.7",
-    "@types/node": "^20.14.9",
-    "bumpp": "^9.4.1",
-    "eslint": "^9.6.0",
-    "esno": "^4.7.0",
-    "magic-string": "^0.30.10",
-    "typescript": "^5.5.3",
-    "unbuild": "^2.0.0",
-    "vite": "^5.3.3",
-    "vitest": "^1.6.0"
+    "@antfu/eslint-config": "^8.0.0",
+    "@types/node": "^25.5.0",
+    "bumpp": "^11.0.1",
+    "eslint": "^10.1.0",
+    "esno": "^4.8.0",
+    "magic-string": "^0.30.21",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
+  },
+  "inlinedDependencies": {
+    "magic-string": "0.30.21"
   }
 }

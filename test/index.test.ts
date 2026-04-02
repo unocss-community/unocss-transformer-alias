@@ -1,10 +1,11 @@
 import type { UnoGenerator } from '@unocss/core'
+import type { KeepOption } from '../src'
 import { createGenerator } from '@unocss/core'
-import { describe, expect, it } from 'vitest'
 import MagicString from 'magic-string'
-import { type KeepOption, expandShortcut, transformAlias } from '../src'
+import { describe, expect, it } from 'vitest'
+import { expandShortcut, transformAlias } from '../src'
 
-const uno = createGenerator({
+const uno = await createGenerator({
   shortcuts: [
     ['btn', 'text-(white xl) font-bold py-2 px-4 rounded cursor-pointer'],
     [/^btn-(.+)$/, ([,d]) => `bg-${d}-500 hover:bg-${d}-700 btn`],
@@ -122,7 +123,7 @@ describe('transformer alias', () => {
   })
 
   it('keep shortcut with block false', async () => {
-    const _uno = createGenerator({
+    const _uno = await createGenerator({
       shortcuts: [
         ['btn', 'text-(white xl) font-bold py-2 px-4 rounded cursor-pointer'],
       ],
